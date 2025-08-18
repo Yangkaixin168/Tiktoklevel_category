@@ -1,0 +1,37 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8084
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # 连接数满后的排队数，默认为100
+    accept-count: 1000
+    threads:
+      # tomcat最大线程数，默认为200
+      max: 800
+      # Tomcat启动初始化的线程数，默认值10
+      min-spare: 100
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+# MyBatisPlus配置
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: com.mt.**.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  # 全局配置
+  global-config:
+    db-config:
+      id-type: auto   #id生成策略为自增
+  configuration:
+    map-underscore-to-camel-case: true    #字段与属性，自动转换为驼峰命名
